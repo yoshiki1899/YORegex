@@ -10,10 +10,10 @@
 
 @implementation AYYORegex
 
-//判断手机号码 (以13 15 18开头)
+//判断手机号码 (以13 14 17 15 18开头)
 + (BOOL)checkPhoneNumber:(NSString *)phoneNumber
 {
-    NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
+    NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|14[57]|17[678]|(18[0,0-9]))\\d{8}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     return [phoneTest evaluateWithObject:phoneNumber];
 }
@@ -54,6 +54,22 @@
     NSString *regex2 = @"^(\\d{14}|\\d{17})(\\d|[xX])$";
     NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex2];
     return [identityCardPredicate evaluateWithObject:idCard];
+}
+
+//判断联系人为汉字，2-4个汉字
++ (BOOL)checkPopleName:(NSString *)popleName
+{
+    NSString *popleRegex = @"[\u4e00-\u9fa5]{2,4}+$";
+    NSPredicate *popleTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",popleRegex];
+    return [popleTest evaluateWithObject:popleName];
+}
+
+/** 判断正整数 */
++ (BOOL)cheakPosInt:(NSString *)posInt
+{
+    NSString *posRegex = @"[1-9]\\d{0,4}";
+    NSPredicate *posTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",posRegex];
+    return [posTest evaluateWithObject:posInt];
 }
 
 @end

@@ -42,6 +42,21 @@
     {
         NSLog(@"账号不符合要求，请重新输入");
     }
+    
+    /*//判断邮箱
+    [AYYORegex checkEmail:@""];
+    
+    //判断正整数
+    [AYYORegex cheakPosInt:@""];
+    
+    //判断身份证
+    [AYYORegex checkIdCard:@""];
+    
+    //判断联系人
+    [AYYORegex checkPopleName:@""];
+    
+    //判断手机号
+    [AYYORegex checkPhoneNumber:@""];*/
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
